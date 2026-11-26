@@ -96,3 +96,58 @@ Different petal and ring counts.
 Same seed, different parameters.
 
 ![The same seed with different parameters](assets/m1_params.png)
+
+## Milestone #2
+
+The flowers open when the camera gets close, the paper has its own shader, and the landscape is now a pond with a day and night cycle.
+
+* The ridges were cut. Feedback on Milestone 1 was to make the blue ground water instead of mountains, so it is now a flat pond with a ring of folded rocks around it and green land past the rocks.
+* Each flower eases open or shut based on its distance to the camera. Turning off auto bloom gives the fold slider back.
+* An open flower pushes pleated ripples out around it. The rings are polygons with one side per petal, so every crease is a straight fold.
+* Lily pads, koi, and rocks are folded from a few triangles. Each koi circles a flower, swings its tail, and leaves small ripples behind.
+* The paper shader lights the side of a sheet that faces the sun and lets some light through to the other side, so petals glow when the sun is behind them. It also adds fiber grain and thin lines on folds and cut edges. The paper weight slider goes from tissue to card.
+* The sky is a backdrop of paper strips with folded models hung on it: a pleated sun, a crescent moon, four point stars, and faceted clouds.
+* The fly box swaps the camera for a folded crane. A and D turn it, W and S climb and dive, and the camera follows behind it.
+* The sun crosses the sky on its own. At night the moon takes over as the light and every flower closes until sunrise. The time slider sets the hour, the day cycle box pauses it, and day length sets how fast it runs.
+
+Drag to look around, scroll to zoom, and hold W A S D or the arrow keys to glide over the water.
+
+### Output
+
+![Default view of the pond with the controls panel](assets/m2_app.jpg)
+
+Gliding across the pond.
+
+![The camera gliding across the pond while flowers open](assets/m2_glide.gif)
+
+A day and a night.
+
+![The sun setting, the flowers closing under the moon, and the sun rising again](assets/m2_day.gif)
+
+Flowers opening on approach.
+
+![Three frames of the camera moving toward closed flowers that open](assets/m2_approach.jpg)
+
+Paper weight at 0 and 1 with the sun behind the flower.
+
+![The same flower as thin glowing paper and as thick dark paper](assets/m2_paper.jpg)
+
+Ripples for 5, 8, and 12 petals.
+
+![Top views of three flowers with ripple rings that match their petal count](assets/m2_petals.jpg)
+
+Flying the crane.
+
+![A folded crane flying over the pond with the camera behind it](assets/m2_crane.gif)
+
+A koi and a lily pad.
+
+![A folded koi with its wake and a folded lily pad](assets/m2_koi.jpg)
+
+Noon, golden hour, dusk, and night.
+
+![The same view at four times of day](assets/m2_time.jpg)
+
+Example seeds.
+
+![Three ponds from three seeds](assets/m2_seeds.jpg)

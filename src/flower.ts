@@ -1,14 +1,16 @@
-import { BufferAttribute, BufferGeometry, Material, Mesh } from 'three'
+import { BufferGeometry, Material, Mesh } from 'three'
 import { Bloom } from './bloom'
+import { sheet } from './paper'
 
 export class Flower extends Mesh<BufferGeometry, Material> {
+  open = 0
   private frames: Float32Array[]
+  private index: number[]
 
   constructor(bloom: Bloom, material: Material) {
-    super(new BufferGeometry(), material)
+    super(sheet(bloom.frames[0], bloom.index, (a, b) => a > 0 && b > 0), material)
     this.frames = bloom.frames
-    this.geometry.setIndex(bloom.index)
-    this.geometry.setAttribute('position', new BufferAttribute(new Float32Array(this.frames[0].length), 3))
+    this.index = bloom.index
     this.castShadow = true
     this.receiveShadow = true
   }
@@ -20,7 +22,12 @@ export class Flower extends Mesh<BufferGeometry, Material> {
     const from = this.frames[i]
     const to = this.frames[i + 1]
     const position = this.geometry.attributes.position
-    for (let j = 0; j < from.length; j++) position.array[j] = from[j] + (to[j] - from[j]) * (at - i)
+    this.index.forEach((vertex, corner) => {
+      for (let axis = 0; axis < 3; axis++) {
+        const j = 3 * vertex + axis
+        position.array[3 * corner + axis] = from[j] + (to[j] - from[j]) * (at - i)
+      }
+    })
     position.needsUpdate = true
     this.geometry.computeBoundingSphere()
   }
